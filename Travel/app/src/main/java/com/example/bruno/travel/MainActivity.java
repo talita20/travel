@@ -5,23 +5,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private static float valor;
+    private String valor;
 
     public void saladValor(View view){
-        EditText valorEdit = (EditText) findViewById(R.id.valorDisponivel);
-        valor = Float.valueOf(valorEdit.getText().toString());
+        EditText valorEdit = findViewById(R.id.valorDisponivel);
+        valor = (valorEdit.getText().toString());
+        System.out.println(valor);
         Intent it = new Intent(MainActivity.this, Relatorio.class);
         it.putExtra("valor", valor);
-
         startActivity(it);
     }
 
-    static float getValor(){
-        return valor;
-    }
+    //static float getValor(){
+    //    return valor;
+    //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
