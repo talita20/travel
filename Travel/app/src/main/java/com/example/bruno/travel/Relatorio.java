@@ -21,7 +21,10 @@ public class Relatorio extends AppCompatActivity {
     float valorLazer = 0;
     float valorOutros = 0 ;
     float valorTotal = 0;
-    private TextView gasto;
+    private TextView gastoAlimentacao;
+    private TextView gastoTransporte;
+    private TextView gastoLazer;
+    private TextView gastoOutros;
 
 
     public void exibeValores(Intent intent){
@@ -56,7 +59,10 @@ public class Relatorio extends AppCompatActivity {
         getSupportActionBar().hide();
         //exibeValores(getIntent());
         String value = "";
-        gasto = (TextView) findViewById(R.id.valorAlimentacao);
+        gastoAlimentacao = (TextView) findViewById(R.id.valorAlimentacao);
+        gastoTransporte = (TextView) findViewById(R.id.valorTransporte);
+        gastoLazer = (TextView) findViewById(R.id.valorLazer);
+        gastoOutros = (TextView) findViewById(R.id.valorOutros);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             value = extras.getString("valor");
@@ -82,7 +88,10 @@ public class Relatorio extends AppCompatActivity {
         TextView alimentacao = findViewById(R.id.valorAlimentacaoMaximo);
         alimentacao.setText(String.valueOf(valorAlimentacaoMaximo));
         //TextView alimentacaoGasto = findViewById(R.id.valorAlimentacao);
-        gasto.setText(String.valueOf(valorAlimentacao));
+        gastoAlimentacao.setText(String.valueOf(valorAlimentacao));
+        gastoTransporte.setText(String.valueOf(valorTransporte));
+        gastoLazer.setText(String.valueOf(valorLazer));
+        gastoOutros.setText(String.valueOf(valorOutros));
         TextView transporte = findViewById(R.id.valorTransporteMaximo);
         transporte.setText(String.valueOf(valorTransporteMaximo));
         TextView transporteGasto = findViewById(R.id.valorTransporte);
@@ -96,12 +105,12 @@ public class Relatorio extends AppCompatActivity {
         TextView outrosGasto = findViewById(R.id.valorOutros);
         outrosGasto.setText(String.valueOf(valorOutros));
 
-        gasto.setOnClickListener(new View.OnClickListener() {
+        gastoAlimentacao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 final AlertDialog.Builder alert = new AlertDialog.Builder(Relatorio.this);
                 final EditText editText = new EditText(Relatorio.this);
-                alert.setTitle("Titulo");
+                alert.setTitle("Adicionar gasto");
                 alert.setMessage("Insira o quanto você gastou:");
                 alert.setView(editText);
 
@@ -109,8 +118,98 @@ public class Relatorio extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Editable valor = editText.getText();
-                        Float total = Float.parseFloat(gasto.getText().toString()) + Float.parseFloat(valor.toString());
-                        gasto.setText(total.toString());
+                        Float total = Float.parseFloat(gastoAlimentacao.getText().toString()) + Float.parseFloat(valor.toString());
+                        gastoAlimentacao.setText(total.toString());
+                        Float total_gasto = Float.parseFloat((totalGasto.getText().toString())) + Float.parseFloat(valor.toString());
+                        totalGasto.setText(total_gasto.toString());
+                    }
+                });
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.show();
+
+            }
+        });
+
+        gastoTransporte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(Relatorio.this);
+                final EditText editText = new EditText(Relatorio.this);
+                alert.setTitle("Adicionar gasto");
+                alert.setMessage("Insira o quanto você gastou:");
+                alert.setView(editText);
+
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Editable valor = editText.getText();
+                        Float total = Float.parseFloat(gastoTransporte.getText().toString()) + Float.parseFloat(valor.toString());
+                        gastoTransporte.setText(total.toString());
+                        Float total_gasto = Float.parseFloat((totalGasto.getText().toString())) + Float.parseFloat(valor.toString());
+                        totalGasto.setText(total_gasto.toString());
+                    }
+                });
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.show();
+
+            }
+        });
+
+        gastoLazer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(Relatorio.this);
+                final EditText editText = new EditText(Relatorio.this);
+                alert.setTitle("Adicionar gasto");
+                alert.setMessage("Insira o quanto você gastou:");
+                alert.setView(editText);
+
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Editable valor = editText.getText();
+                        Float total = Float.parseFloat(gastoLazer.getText().toString()) + Float.parseFloat(valor.toString());
+                        gastoLazer.setText(total.toString());
+                        Float total_gasto = Float.parseFloat((totalGasto.getText().toString())) + Float.parseFloat(valor.toString());
+                        totalGasto.setText(total_gasto.toString());
+                    }
+                });
+                alert.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                alert.show();
+
+            }
+        });
+
+        gastoOutros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final AlertDialog.Builder alert = new AlertDialog.Builder(Relatorio.this);
+                final EditText editText = new EditText(Relatorio.this);
+                alert.setTitle("Adicionar gasto");
+                alert.setMessage("Insira o quanto você gastou:");
+                alert.setView(editText);
+
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Editable valor = editText.getText();
+                        Float total = Float.parseFloat(gastoOutros.getText().toString()) + Float.parseFloat(valor.toString());
+                        gastoOutros.setText(total.toString());
                         Float total_gasto = Float.parseFloat((totalGasto.getText().toString())) + Float.parseFloat(valor.toString());
                         totalGasto.setText(total_gasto.toString());
                     }
